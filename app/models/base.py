@@ -7,6 +7,21 @@ from app.core.db import Base
 class Basemodel(Base):
     name = Column(
         String(settings.max_name_len),
+        unique=False,
+        nullable=False,
+    )
+    description = Column(
+        Text,
+        nullable=True,
+        comment='Описание',
+    )
+
+    __abstract__ = True
+
+
+class Basehelpmodel(Base):
+    name = Column(
+        String(settings.max_name_len),
         unique=True,
         nullable=False,
     )

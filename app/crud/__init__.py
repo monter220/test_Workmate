@@ -1,0 +1,1 @@
+from app.crud.kitty import breed_crud, kitty_crud, kittycolour_crud  # noqa

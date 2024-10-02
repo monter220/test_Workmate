@@ -1,25 +1,27 @@
 from sqlalchemy import Column, String, Integer, ForeignKey
 from sqlalchemy.orm import relationship
 
-from app.core.config import settings
-from app.models.base import Basemodel
+from app.models.base import Basemodel, Basehelpmodel
 
 
-class Breed(Basemodel):
+class Breed(Basehelpmodel):
     """
     Модель породы котят
     """
-    pass
+    kitty=relationship('Kitty', cascade='delete')
 
 
-class KittyColour(Basemodel):
+class KittyColour(Basehelpmodel):
     """
     Модель цветов котят
     """
-    pass
+    kitty=relationship('Kitty', cascade='delete')
 
 
 class Kitty(Basemodel):
+    """
+    Модель котят
+    """
     breed_id = Column(
         Integer,
         ForeignKey('breed.id'),
